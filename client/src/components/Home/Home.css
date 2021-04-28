@@ -1,0 +1,45 @@
+.home {
+    display: flex;
+    align-items: flex-start;
+}
+
+.home__sideImage {
+    height: 100vh;
+    width: 50vw;
+}
+
+.home__left {
+    margin: 0 100px;
+}
+
+.home__header {
+    margin-top: 170px;
+    margin-bottom: 0;
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 98px;
+    color: #18191F;
+    text-shadow: 0px 10px 15px rgba(239, 166, 172, 0.25);
+}
+.home__subheading {
+    font-size: 18px;
+    line-height: 32px;
+    color: #18191F   
+}
+
+.home__cta {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    background: #8C30F5;
+    border-radius: 7px;
+    padding: 14px 28px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.home__cta:hover {
+    background: #6b23bd;
+    box-shadow: 0px 20px 30px rgba(107, 35, 189, 0.288);
+    
+}

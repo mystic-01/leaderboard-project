@@ -1,0 +1,27 @@
+.navbar {
+    color: #18191F;
+    padding-top: 1.077rem;
+    position: sticky;
+    background: transparent;
+}
+
+.navbar__brand {
+    color: #18191F;
+    font-weight: 700;
+    font-size: 2rem;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+.navbar__link {
+    color: #18191F;
+    float: right;
+    font-weight: 400;
+    font-size: 1.7rem;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.navbar__link:hover, .navbar__link::selection {
+    border-bottom: 5px solid #8C30F5;
+}
