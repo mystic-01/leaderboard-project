@@ -37,6 +37,8 @@ const useStyles = makeStyles((theme) => ({
   root2: {
   	margin: theme.spacing(1),
     height: "4vw",
+    width: '25ch',
+
   },
 }));
 
@@ -45,6 +47,10 @@ const Create = () => {
 	const classesforform = useStyles();
 	const [value1, setValue1] = React.useState('');
 	const [value2, setValue2] = React.useState('');
+	const [value3, setValue3] = React.useState('');
+	const [value4, setValue4] = React.useState('');
+
+
 	const [participants, setParticipants] = React.useState([]);
 
 
@@ -56,13 +62,27 @@ const Create = () => {
 		setValue2(event.target.value);
 	};
 	const handleParticipantNameChange = (event) => {
-		setValue2(event.target.value);
+		setValue3(event.target.value);
 	};
 	const handleParticipantScoreChange = (event) => {
-		setValue2(event.target.value);
+		setValue4(event.target.value);
 	};
-	const deleteParticipant = (event) => {
-		setValue2(event.target.value);
+	const deleteParticipant = (index) => {
+		   let copyparticipants=[];
+		   for (let i=0;i < participants.length ; i++){
+		   	if( i != index){
+		   		copyparticipants.push(participants[i])
+		   	}
+		   }
+		   // delete copyparticipants[key]
+		   setParticipants({
+		     participants: copyparticipants,
+		  })
+
+		// let allParticipants = [...participants];
+		// let allParticipants = participants;
+		// allParticipants.splice(index,1);
+		// setParticipants({participants: [...allParticipants] });
 	};
 
     const row = [{  
@@ -157,7 +177,7 @@ const Create = () => {
 							        	value={item.score}
 							          	onChange={handleParticipantScoreChange}
 							        />
-							        <Button className={classesforform.root2} variant="contained" color="secondary" onClick={deleteParticipant}>Delete</Button>							        
+							        <Button className={classesforform.root2} variant="contained" color="secondary" onClick={index => deleteParticipant(index)}>Delete</Button>							        
 						    	</form>
 	                        </div>
 	                    )
