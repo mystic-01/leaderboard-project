@@ -47,8 +47,8 @@ const Create = () => {
 	const classesforform = useStyles();
 	const [value1, setValue1] = React.useState('');
 	const [value2, setValue2] = React.useState('');
-	const [value3, setValue3] = React.useState('');
-	const [value4, setValue4] = React.useState('');
+	const [value3, setValue3] = React.useState([]);
+	const [value4, setValue4] = React.useState([]);
 
 
 	const [participants, setParticipants] = React.useState([]);
@@ -61,23 +61,36 @@ const Create = () => {
 	const handleChange2 = (event) => {
 		setValue2(event.target.value);
 	};
-	const handleParticipantNameChange = (event) => {
-		setValue3(event.target.value);
+	const handleParticipantNameChange = (event, index) => {
+		let copyparticipants=[...participants];
+		copyparticipants[index].name=event.target.value;
+		// debugger
+		   setParticipants(
+		     copyparticipants,
+		  )
+		// console.log(index, participants)
 	};
-	const handleParticipantScoreChange = (event) => {
-		setValue4(event.target.value);
+	const handleParticipantScoreChange = (event, index) => {
+		let copyparticipants=[...participants];
+		copyparticipants[index].score=event.target.value;
+		   setParticipants(
+		     copyparticipants,
+		 )
+		// console.log(index, participants)
 	};
-	const deleteParticipant = (index) => {
+	const deleteParticipant = (event, index) => {
+		console.log(index);
 		   let copyparticipants=[];
 		   for (let i=0;i < participants.length ; i++){
-		   	if( i != index){
+		   	if( i !== index){
 		   		copyparticipants.push(participants[i])
+		   		// console.log(i);
 		   	}
 		   }
 		   // delete copyparticipants[key]
-		   setParticipants({
-		     participants: copyparticipants,
-		  })
+		   setParticipants(
+		     copyparticipants,
+		  )
 
 		// let allParticipants = [...participants];
 		// let allParticipants = participants;
@@ -109,12 +122,25 @@ const Create = () => {
 
     const addParticipant = () => {
     	setParticipants(participants => [...participants, {'name':'', 'score': 0} ] );
+    	// resize();
         // var allParticipants=participants;
         // console.log(allParticipants);
         // allParticipants.push({'name':'', 'score': 0});
         // setParticipants({participants: allParticipants});
-    }
+    }/*
+    const resize = () => {
+    	let n = participants.length;
+    	var foo = new Array(n);
+    	var poo = new Array(n);
 
+    	for (let i=0;i < value3.length ; i++){
+		   	foo[i]=value3[i];
+		   	poo[i]=value4[i];
+		}
+    	setValue3({value3 : foo});
+    	setValue4({value4 : poo});
+    	console.log("OK_RES", value3);
+    }*/
     return (
     	<React.Fragment>
     	<div>
@@ -168,16 +194,16 @@ const Create = () => {
 							        <TextField 
 							        	variant="outlined"
 							        	label="Name"
-							        	value={item.name}
-							          	onChange={handleParticipantNameChange}
+							        	value={participants[index].name}
+							          	onChange={(event) => handleParticipantNameChange(event, index)}
 							        />
 							        <TextField 
 							        	variant="outlined"
 							        	label="Score"
-							        	value={item.score}
-							          	onChange={handleParticipantScoreChange}
+							        	value={participants[index].score}
+							          	onChange={(event)=>handleParticipantScoreChange(event,index)}
 							        />
-							        <Button className={classesforform.root2} variant="contained" color="secondary" onClick={index => deleteParticipant(index)}>Delete</Button>							        
+							        <Button className={classesforform.root2} variant="contained" color="secondary" onClick={ (event) => deleteParticipant(event, index)}>Delete</Button>							        
 						    	</form>
 	                        </div>
 	                    )
