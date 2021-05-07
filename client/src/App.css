@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&family=Raleway:wght@200;300;400;500;700&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: #18191f;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  outline: none;
+  padding: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+a:hover, button:hover {
+  opacity: 0.7;
+}
+
+hr {
+  max-width: 100%;
+  width: 77%;
+  height: 10px;
+  border-style: solid;
+  border-color: rgba(191, 191, 191, 0.9);
+  border-width: 1.7px 0 0 0;
+  border-radius: 17px;
+}
+
+img {
+  margin: 0;
+}

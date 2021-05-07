@@ -1,0 +1,52 @@
+/* Thank you for adding the comments, they really help in understanding the code! */
+.about {
+  margin: 0 50px;
+}
+
+.about__aboutUs {
+  text-align: center;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  padding: 90px 10px 0 10px;
+  margin-top: 40px;
+  height: 40vh;
+  width: 80%;
+}
+
+/* Add shadows to create the "card" effect */
+.about__card {
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  padding: 20px 10px;
+  text-align: center;
+  transition: 0.5s;
+  width: 80%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.about__card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+.about__card > img {
+  border-radius: 7px;
+  margin-top: 7%;
+  width: 20%;
+}
+
+.about__card > center > p, .about__aboutUs > p {
+  margin: 3% 10%;
+}
+
+@media screen and (max-width: 768px) {
+
+  .about__aboutUs {
+    padding: 50px 10px 0 10px;
+  }
+
+  .about__card > center > p, .about__aboutUs > p {
+    margin: 15px;
+  }
+}
