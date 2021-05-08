@@ -5,6 +5,12 @@ const useStyles = makeStyles((theme) => ({
       "& .MuiTextField-root": {
         margin: theme.spacing(1),
         width: "35ch",
+      }, 
+      [theme.breakpoints.down('xs')]: {
+        "& .MuiTextField-root": {
+          margin: theme.spacing(1),
+          width: "20ch",
+        }, 
       },
     },
     root2: {
@@ -53,16 +59,24 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
       justifyContent: "flex-end",
       alignItems: "flex-end",
+      [theme.breakpoints.down('xs')]: {
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        alignItems: "flex-start",
+      },
     },
     footerButton: {
       border: "1.5px solid #8C30F5",
       borderRadius: "4px",
-      margin: "0.67rem 0 0 1rem",
+      margin: "0.67rem 0 0 0.5rem",
       padding: "5px 10px",
       height: "44px",
       width: "200px",
       minWidth: "150px",
       boxShadow: "0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%)",
+      [theme.breakpoints.down('xs')]: {
+        margin: "1rem 0 0 0.5rem",
+      },
     }
 }));
       
