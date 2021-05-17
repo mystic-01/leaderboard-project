@@ -12,7 +12,7 @@ const NavbarCool = () => {
     <nav className="navbarCool">
       <div className="navbarCool__logo">
         <BrandLogo/>
-        <Link href="/">LeaderBirds</Link>
+        <Link to="/">LeaderBirds</Link>
       </div>
       <span className="navbarCool__icon"><DehazeIcon /></span> 
       <div className="navbarCool__menu">

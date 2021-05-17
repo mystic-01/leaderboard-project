@@ -21,7 +21,9 @@ import {
   FormControl,
   FormHelperText,
 } from "@material-ui/core";
+import { useDispatch } from 'react-redux';
 
+import { createBoard } from '../../actions/leaderboard';
 import NavbarCool from "../NavbarCool/NavbarCool";
 import useStyles from "./styles";
 
@@ -29,6 +31,7 @@ import "./Create.css";
 
 const Create = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [boardName, setBoardName] = useState("");
   const [boardDescription, setBoardDescription] = useState("");
@@ -50,11 +53,12 @@ const Create = () => {
   };
 
   const addParticipant = () => {
-    setParticipants([...participants, { name: "", score: Number }]);
+    setParticipants([...participants, { name: "", score: "" }]);
   };
 
-  const createBoard = () => {
-    console.log(participants);
+  const createNewBoard = () => {
+    const board = { boardName, boardDescription, participants };
+    dispatch(createBoard(board));
   };
 
   const row = [
@@ -137,6 +141,7 @@ const Create = () => {
                       }
                     />
                     <TextField
+                      type="number"
                       variant="outlined"
                       label="Score"
                       value={participants[index].score}
@@ -171,7 +176,7 @@ const Create = () => {
                 className={classes.footerButton}
                 variant="contained"
                 color="primary"
-                onClick={createBoard}
+                onClick={createNewBoard}
               >
                 Create Board
               </Button>

@@ -1,29 +1,32 @@
 .viewBoard__top {
-    margin: auto;
+    margin: 0 auto 100px auto;
     height: 50%;
-    width: 73%;
+    width: 70%;
 }
 
 .viewBoard__boardInfo {
-    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 80px;
 }
 
 .viewBoard__bottom {
-    /* background-color: #efefef; */
-    padding: 40px 20px;
-    margin: 100px 0 0 0;
+    background-color: #f7f7f7;;
     box-shadow: 0 1px 3px rgb(0, 0, 0, 0.12), 0 2px 7px rgb(0, 0, 0, 0.06);
-    margin: auto;
-    width: 70%;
+    height: 50vh;
 }
 
 .viewBoard__actionButtonSet {
     display: flex;
     justify-content: center;
-    margin: 40px 0;
+    padding: 30px 0;
+}
+
+.viewBoard__box {
+    background-color: #fff;
+    width: 50%;
+    margin: auto;
 }
 
 .viewBoard__button {
@@ -34,12 +37,26 @@
     color: #7856ff;
     cursor: pointer;
     height: 44px;
-    margin: 0 0.77rem 0 0;
-    min-width: 150px;
-    max-width: 250px;
+    font-size: 0.9rem;
+    margin: 0 20px 0 0;
+    width: 150px;
+}
+.viewBoard__shareButton {
+    background-color: #7856ff;
+    color: #fff;
+    margin: 0;
 }
 
-.viewBoard__box {
-    /* border: 1.5px solid #7856ff; */
-    padding: 17px 47px;
+
+@media screen and (max-width: 769px) {
+    .viewBoard__top {
+        width: 90%;
+        margin: 0 auto 40px auto;
+    }
+    .viewBoard__bottom {
+        height: 58vh;
+    }
+    .viewBoard__box {
+        width: 100%;
+    }    
 }
