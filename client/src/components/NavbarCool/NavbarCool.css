@@ -1,3 +1,7 @@
+/* .navbarCoolAndSidebar {
+  position: fixed;
+  width: 100%;
+} */
 .navbarCool {
   margin-top: 30px;
   display: flex;
@@ -18,6 +22,7 @@
 
 .navbarCool__icon {
   display: none;
+  cursor: pointer;
 }
 
 .navbarCool__menu > a {
@@ -31,24 +36,18 @@
 }
 
 .navbarCool__menu a:hover {
-  /* text-shadow: 0px 3px 7px #8c30f567; */
-  text-decoration: underline;
-  text-decoration-color: #8c30f5d8;
-  text-decoration-thickness: 7px;
+  text-decoration: underline #8c30f5d8 7px;
 }
 
 
 @media screen and (max-width: 1200px) {
-    
+
     .navbarCool__menu > a, .navbarCool__more {
         display: none;
     }
     .navbarCool__icon {
-      /* color: #eee; */
       display: block;
       font-size: 2rem;
       margin-left: auto;
-      cursor: pointer;
     }
-  }
-  
+}

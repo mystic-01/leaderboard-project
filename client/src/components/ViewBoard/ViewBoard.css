@@ -27,6 +27,7 @@
     background-color: #fff;
     width: 50%;
     margin: auto;
+    animation: slideUp 900ms ease-in;
 }
 
 .viewBoard__button {

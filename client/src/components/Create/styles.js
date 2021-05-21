@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "2rem 3rem",
       width: "65%",
       boxShadow: "0 1px 3px rgb(0 0 0 / 24%), 0 2px 7px rgb(0 0 0 / 12%)",
+      animation: "slideUp 900ms ease-in"
     },
     heading2: {
       fontSize: "1.5rem",

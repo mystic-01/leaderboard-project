@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
     },
     grid: {
         height: "70px",
-        boxShadow: "0px 1px 1px rgba(0, 0, 0, 0.047)"
-    },
-    centeringClass :{
+        boxShadow: "0px 1px 1px rgba(0, 0, 0, 0.047)",
+      },
+      centeringClass :{
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        width: "70px"
+        width: "70px",
     }
 }));
       
