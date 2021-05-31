@@ -20,9 +20,8 @@ const ViewBoard = () => {
     (state) => state.leaderboard
   );
 
-  participants.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
   const participantArray = participants || [{ name: "Loading...", score: 69 }];
-
+  
   useEffect(() => {
     dispatch(fetchBoard(params.id));
   }, [params, dispatch]);
@@ -34,10 +33,10 @@ const ViewBoard = () => {
 
   const shareBoard = () => {
     navigator.clipboard.writeText(`http://localhost:3000${location.pathname}`);
-    alert.show(
-      "Link to your board copied successfully!",
-      { timeout: 5000, type: "success",}
-    );
+    alert.show("Link to your board copied successfully!", {
+      timeout: 5000,
+      type: "success",
+    });
   };
 
   return (

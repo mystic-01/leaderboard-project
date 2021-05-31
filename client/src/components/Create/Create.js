@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { TextField, Button, Container, Typography } from "@material-ui/core";
 import { useParams, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { createBoard, fetchBoard, editBoard } from "../../actions/leaderboard";
 import NavbarCool from "../NavbarCool/NavbarCool";
@@ -16,17 +16,17 @@ const Create = () => {
   const [boardName, setBoardName] = useState("");
   const [boardDescription, setBoardDescription] = useState("");
   const [participants, setParticipants] = useState([]);
-  const editBoardInfo = useSelector((state) => state.leaderboard);
-
-  console.log(editBoardInfo);
 
   useEffect(() => {
     if (params.id) {
       dispatch(fetchBoard(params.id));
-      if (editBoardInfo !== []) {
-        setBoardName(editBoardInfo.boardName);
-        setBoardDescription(editBoardInfo.boardDescription);
-        setParticipants(editBoardInfo.participants);
+      
+      if (localStorage.getItem("board")) {
+        const data = JSON.parse(localStorage.getItem("board"));
+        setBoardName(data.boardName);
+        console.log(data.boardName);
+        setBoardDescription(data.boardDescription);
+        setParticipants(data.participants);
       }
     }
   }, [params, dispatch]);
@@ -50,6 +50,7 @@ const Create = () => {
 
   const createNewBoard = (e) => {
     e.preventDefault();
+    participants.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
     const board = { boardName, boardDescription, participants };
     if (params.id) {
       dispatch(editBoard(params.id, board, history));
@@ -132,6 +133,7 @@ const Create = () => {
                     value={participants[index].score}
                     onChange={(e) => handleParticipantScoreChange(e, index)}
                     variant="outlined"
+                    InputProps={{ inputProps: { max: 99999 } }}
                     required
                   />
                   <Button

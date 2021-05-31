@@ -4,7 +4,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import { Provider as AlertProvider } from "react-alert";
 
 import theme from "./styles";
-import { options, AlertTemplate } from './alerts';
+import { options, AlertTemplate } from "./alerts";
 import Home from "./components/Home/Home";
 import Create from "./components/Create/Create";
 import About from "./components/About/About";

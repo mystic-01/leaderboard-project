@@ -8,6 +8,21 @@ body {
   width: 100%;
   font-family: "Raleway", sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  box-shadow: 0px 0px 0px 10000vh #ffffff;
+  border-radius: 5px;
+  height: 50px;
+  
+}
+::-webkit-scrollbar-track {
+  background: linear-gradient(0deg, #ff0000 0%, #ffd700 100%);
+}
+
 *, p, img {
   margin: 0;
   padding: 0;
@@ -47,16 +62,6 @@ button {
 
 button:hover {
   opacity: 0.7;
-}
-
-hr {
-  max-width: 100%;
-  width: 77%;
-  height: 10px;
-  border-style: solid;
-  border-color: #bfbfbfe6;
-  border-width: 1.7px 0 0 0;
-  border-radius: 17px;
 }
 
 
