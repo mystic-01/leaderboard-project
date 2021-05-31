@@ -4,10 +4,15 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 
+import boardRoutes from './routes/board.js';
+
 dotenv.config();
 const app = express();
 
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use('/board', boardRoutes);
 
 const PORT = process.env.PORT || 5000;
 
