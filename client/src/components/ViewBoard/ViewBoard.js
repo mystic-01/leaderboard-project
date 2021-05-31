@@ -32,7 +32,7 @@ const ViewBoard = () => {
   }, []);
 
   const shareBoard = () => {
-    navigator.clipboard.writeText(`http://localhost:3000${location.pathname}`);
+    navigator.clipboard.writeText(`https://leaderbirds.netlify.app${location.pathname}`);
     alert.show("Link to your board copied successfully!", {
       timeout: 5000,
       type: "success",

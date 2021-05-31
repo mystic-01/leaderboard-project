@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/board';
+const url = 'https://leaderbirds.herokuapp.com/board';
 
 //GET a particular board.
 export const fetchBoard = (id) => axios.get(`${url}/${id}`);
