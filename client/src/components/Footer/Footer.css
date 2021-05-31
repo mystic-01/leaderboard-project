@@ -1,0 +1,182 @@
+footer {
+  margin: 100px 0;
+  padding: 100px 0 0 0;
+  height: 70vh;
+  background-color: #acacac;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer Main Wrapper */
+.footer__main {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 85vw;
+  padding: 70px 0 0;
+}
+
+.footer__main > section > span {
+  background: linear-gradient(90deg, gold, red);
+  border-radius: 10px;
+  display: block;
+  margin: -24px 0 24px;
+  height: 4px;
+  width: 44px;
+}
+
+.footer__main h4 {
+  color: rgba(var(--secondary-light), 1);
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 30px;
+}
+
+/* Footer Main Flex Specifications */
+.footer__quickLinks {
+  flex: 0.3;
+}
+.footer__developerSection {
+  flex: 0.3;
+  margin: 0 100px;
+}
+.footer__contactUs {
+  flex: 0.3;
+}
+
+/* Footer Quick Links */
+.footer__quickLinks > a {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 1.3rem;
+  margin: 15px 0 5px 0;
+}
+
+.footer__quickLinks > a > svg {
+  margin-right: 10px;
+}
+
+
+/* Footer Developers Section */
+.footer__developer {
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.footer__developer > img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 20px;
+  filter: grayscale();
+}
+.footer__developer > img:hover {
+  filter: none;
+  cursor: pointer;
+}
+
+.footer__developer > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  letter-spacing: 1px;
+}
+
+.footer__developer p {
+  margin: 0 0 5px 0;
+}
+
+.footer__developer a {
+  color: #000;
+  margin: 0 5px 0 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.github:hover > svg {
+  color: #fff;
+}
+.linkedIn:hover > svg {
+  color: #0a66c2;
+}
+
+/* Footer Contact Us */
+.footer__contactUs > ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer__contactUs > ul > .email {
+  display: flex;
+  align-items: center;
+  margin: 0 0 5px 0;
+}
+.footer__contactUs > ul > .phone {
+  display: flex;
+  align-items: center;
+  margin: 0 0 40px 0;
+}
+.footer__contactUs svg {
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.email > svg:hover {
+  /* color: #ffff00; */
+  color: #ffd900;
+}
+.phone > svg:hover {
+  /* color: #36eb36; */
+  color: #00ff00;
+}
+
+/* Footer Valediction */
+.footer__valediction {
+  margin: 0 auto;
+  padding: 60px 0 20px 0;
+}
+
+.footer__valediction a {
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  footer {
+    margin: 100px 0;
+    padding: 0 0 0 0;
+    height: auto;
+  }
+
+  .footer__main {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 90px 0 0 40px;
+  }
+
+  .footer__developerSection {
+    flex: 0.3;
+    margin: 50px 0;
+  }
+
+  .footer__quickLinks a,
+  .footer__valediction a {
+    color: #18191f;
+    background: linear-gradient(to right, gold, red 50%, #18191f 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
+    overflow: hidden;
+  }
+  .footer__valediction {
+    padding: 40px 0;
+  }
+}

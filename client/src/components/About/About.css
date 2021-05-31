@@ -1,19 +1,78 @@
 /* Thank you for adding the comments, they really help in understanding the code! */
-.about {
-  margin: 0 50px;
+.about__headWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  margin: 0 140px;
+  background: #fff;
+}
+.about__headWrapper > img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
-.about__aboutUs {
-  text-align: center;
-  border-radius: 5px;
-  background-color: #e7e7e7;
-  padding: 90px 10px 0 10px;
-  margin-top: 40px;
-  height: 40vh;
-  width: 80%;
+.about__textWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+.about__textWrapper > span {
+  background: linear-gradient(90deg, gold, red);
+  border-radius: 10px;
+  display: block;
+  margin: -24px 0 24px;
+  height: 4px;
+  width: 88px;
+}
+.about__textWrapper > h2 {
+  margin: 0 0 2rem;
+  font-size: 1.75rem;
+  box-sizing: border-box;
+}
+.about__textWrapper > p {
+  font-size: 1.15rem;
+  line-height: 28px;
 }
 
-/* Add shadows to create the "card" effect */
+.textLeft > .about__textWrapper {
+  margin: 0 40px 0 0;
+}
+
+.textRight > .about__textWrapper {
+  margin: 0 0 0 40px;
+}
+
+@media screen and (max-width: 1200px) {
+  .about__headWrapper {
+    margin: 40px;
+    padding: 30px 20px;
+    flex-direction: column-reverse;
+  }
+  .about__headWrapper > img {
+    align-self: flex-start;
+    margin: 0 0 30px 0;
+    height: 300px;
+    width: 300px;
+  }
+
+  .about__textWrapper {
+    width: 100%;
+  }
+  .textLeft > .about__textWrapper {
+    margin: 0 40px;
+  }
+  .textRight > .about__textWrapper {
+    margin: 0 40px;
+    order: -1;
+  }
+}
+
+/* Add shadows to create the "card" effect
 .about__card {
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -22,31 +81,22 @@
   text-align: center;
   transition: 0.5s;
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* On mouse-over, add a deeper shadow */
+On mouse-over, add a deeper shadow
 .about__card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Add rounded corners to the top left and the top right corner of the image */
+Add rounded corners to the top left and the top right corner of the image
 .about__card > img {
   border-radius: 7px;
   margin-top: 7%;
-  width: 20%;
 }
 
-.about__card > center > p, .about__aboutUs > p {
+.about__card > center > p {
   margin: 3% 10%;
-}
-
-@media screen and (max-width: 768px) {
-
-  .about__aboutUs {
-    padding: 50px 10px 0 10px;
-  }
-
-  .about__card > center > p, .about__aboutUs > p {
-    margin: 15px;
-  }
-}
+}  */

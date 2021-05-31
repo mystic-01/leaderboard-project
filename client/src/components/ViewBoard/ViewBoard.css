@@ -1,63 +1,75 @@
-.viewBoard__top {
-    margin: 0 auto 100px auto;
-    height: 50%;
-    width: 70%;
-}
-
 .viewBoard__boardInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 80px;
+  margin: 0 auto 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
 }
-
+.viewBoard__boardInfo > h1 {
+  line-height: 4.5rem;
+  font-size: 3rem;
+}
 .viewBoard__bottom {
-    background-color: #f7f7f7;;
-    box-shadow: 0 1px 3px rgb(0, 0, 0, 0.12), 0 2px 7px rgb(0, 0, 0, 0.06);
-    height: 50vh;
+  background-color: #f7f7f7;
+  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.12), 0 2px 7px rgb(0, 0, 0, 0.06);
+  min-height: 54vh;
 }
 
 .viewBoard__actionButtonSet {
-    display: flex;
-    justify-content: center;
-    padding: 30px 0;
-}
-
-.viewBoard__box {
-    background-color: #fff;
-    width: 50%;
-    margin: auto;
-    animation: slideUp 900ms ease-in;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
 }
 
 .viewBoard__button {
-    background-color: #fff;
-    border: 1.5px solid #7856ff;
-    border-radius: 4px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
-    color: #7856ff;
-    cursor: pointer;
-    height: 44px;
-    font-size: 0.9rem;
-    margin: 0 20px 0 0;
-    width: 150px;
+  color: #5200af;
+  background-color: #fff;
+  border: 1.5px solid #5200af;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+  height: 44px;
+  margin: 0 20px 0 0;
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.viewBoard__button > a {
+  font-size: 0.9rem;
+  background: linear-gradient(to right, gold, red 50%, #5200af 50%);
+  background-clip: text;
+  background-size: 200% 100%;
+  background-position: 100%;
+  padding: 13.6px 40.5125px;
+  transition: background-position 275ms ease;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.viewBoard__button > a:hover {
+  background-position: 0% 100%;
 }
 .viewBoard__shareButton {
-    background-color: #7856ff;
-    color: #fff;
-    margin: 0;
+  background-color: #5200af;
+  color: #fff;
+  margin: 0;
+  border: 1.5px solid #5200af;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+  height: 44px;
+  font-size: 0.9rem;
+  width: 150px;
+  min-width: 150px;
 }
 
+.viewBoard__box {
+  background-color: #fff;
+  width: 50%;
+  margin: auto;
+  animation: slideUp 900ms ease-in;
+}
 
-@media screen and (max-width: 769px) {
-    .viewBoard__top {
-        width: 90%;
-        margin: 0 auto 40px auto;
-    }
-    .viewBoard__bottom {
-        height: 58vh;
-    }
-    .viewBoard__box {
-        width: 100%;
-    }    
+@media screen and (max-width: 1200px) {
+  .viewBoard__box {
+    width: 100%;
+  }
 }

@@ -1,49 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import DehazeIcon from "@material-ui/icons/Dehaze";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ToggleOffIcon from "@material-ui/icons/ToggleOff";
+import ToggleOnIcon from "@material-ui/icons/ToggleOn";
+import HomeOutlinedIcon from "@material-ui/icons/HomeWorkOutlined";
+import QuestionAnswerOutlinedIcon from "@material-ui/icons/QuestionAnswerOutlined";
+import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import MoreOutlinedIcon from "@material-ui/icons/MoreHorizOutlined";
 
-import { ReactComponent as BrandLogo } from "../../icons/leaderboard-logo.svg";
-import Sidebar from './Sidebar/Sidebar';
+import { ReactComponent as BrandLogo } from "../../icons/Trophy.svg";
 
 import "./NavbarCool.css";
 
 const NavbarCool = () => {
-
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [screenSize, setScreenSize] = useState(window.innerWidth);
-
-  // Close the sidebar if open on a larger screen.
-  const resizeWindow = () => {
-    setScreenSize(window.innerWidth);
+  const [sidebarActive, setSidebarActive] = useState(false);
+  const handleNavbar = () => {
+    setSidebarActive((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    window.addEventListener('resize', resizeWindow);
-    if (screenSize > 1200) {
-      setShowSidebar(false);
-    }
-    return () => window.removeEventListener('resize', resizeWindow);
-  }, [screenSize]);
-
   return (
-    <div className="navbarCoolAndSidebar">
+    <>
       <nav className="navbarCool">
         <div className="navbarCool__logo">
-          <BrandLogo/>
+          <BrandLogo />
           <Link to="/">LeaderBirds</Link>
         </div>
-        <span className="navbarCool__icon" onClick={() => setShowSidebar(prevState => !prevState)}><DehazeIcon /></span> 
+        <span className="navbarCool__toggleButton" onClick={handleNavbar}>
+          {sidebarActive ? <ToggleOnIcon /> : <ToggleOffIcon />}
+        </span>
         <div className="navbarCool__menu">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/create">Create</Link>
-          <Link to="/about">More</Link>
-          <span className="navbarCool__more"><ExpandMoreIcon /></span> 
+          <Link to="/">Home <span></span></Link>
+          <Link to="/about">About <span></span></Link>
+          <Link to="/create">Create <span></span></Link>
         </div>
       </nav>
-      {showSidebar && <Sidebar />}
-    </div>
+      <div className={sidebarActive ? "sidebar__menu active" : "sidebar__menu"}>
+        <Link to="/">
+          <HomeOutlinedIcon />
+          Home
+        </Link>
+        <Link to="/about">
+          <QuestionAnswerOutlinedIcon />
+          About
+        </Link>
+        <Link to="/create">
+          <CreateOutlinedIcon />
+          Create
+        </Link>
+        <Link to="/about">
+          <MoreOutlinedIcon />
+          More
+        </Link>
+      </div>
+    </>
   );
 };
 

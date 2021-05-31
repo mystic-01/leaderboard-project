@@ -18,10 +18,6 @@ const useStyles = makeStyles((theme) => ({
       height: "3.3rem",
       width: "5ch",
     },
-    navbar: {
-      width: "75%",
-      margin: "auto"
-    },
     heading1: {
       fontSize: "2rem",
       fontWeight: "600",
@@ -32,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     },
     sectionMainCover: {
       backgroundColor :"#f5f5f5",
-      padding: "10vh 0"
-
+      padding: "10vh 0",
+     
     },
     sectionMain: {
       backgroundColor: "#fff",
@@ -42,7 +38,10 @@ const useStyles = makeStyles((theme) => ({
       padding: "2rem 3rem",
       width: "65%",
       boxShadow: "0 1px 3px rgb(0 0 0 / 24%), 0 2px 7px rgb(0 0 0 / 12%)",
-      animation: "slideUp 900ms ease-in"
+      animation: "slideUp 900ms ease-in",
+      [theme.breakpoints.down('xs')]: {
+        width: "100%",
+      },
     },
     heading2: {
       fontSize: "1.5rem",
@@ -67,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     footerButton: {
-      border: "1.5px solid #8C30F5",
+      border: "1.5px solid #5200af",
       borderRadius: "4px",
       margin: "0.67rem 0 0 0.5rem",
       padding: "5px 10px",

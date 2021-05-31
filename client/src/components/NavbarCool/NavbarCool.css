@@ -1,53 +1,115 @@
-/* .navbarCoolAndSidebar {
-  position: fixed;
-  width: 100%;
-} */
 .navbarCool {
-  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 48px 0px; */
+  padding: 20px 100px 20px 100px;
 }
-
 .navbarCool__logo {
   display: flex;
   align-items: center;
 }
-
 .navbarCool__logo > a {
   margin-left: 10px;
   font-size: 2rem;
   font-weight: 700;
 }
-
-.navbarCool__icon {
-  display: none;
-  cursor: pointer;
+.navbarCool__logo > svg {
+  transform: scale(1.1);
 }
 
+.navbarCool__menu {
+  display: flex;
+}
 .navbarCool__menu > a {
   margin-left: 20px;
   font-weight: 500;
   font-size: 1.5rem;
 }
+/* .navbarCool__menu a:hover > span{
+  background: linear-gradient(90deg, gold, red);
+  border-radius: 10px;
+  display: block;
+  height: 3px;
+  width: 100%;
+} */
 
-.navbarCool__menu{
+.sidebar__menu {
+  display: none;
+}
+.sidebar__menu > a {
+  padding: 5px;
   display: flex;
+  align-items: center;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.07);
+}
+.sidebar__menu > a > svg {
+  margin: 0 10px 0 20px;
 }
 
-.navbarCool__menu a:hover {
-  text-decoration: underline #8c30f5d8 7px;
+.navbarCool__toggleButton {
+  cursor: pointer;
+  transition: all 0.5s linear;
+  margin-left: auto;
+  display: none;
 }
-
+.navbarCool__toggleButton > svg {
+  color: #fff;
+  padding: 3px 5px;
+  transform: scale(2);
+  transition: all 0.275ms ease-in;
+}
+.navbarCool__toggleButton:hover svg {
+  animation: colorChanger 0.275s ease-in-out forwards;
+}
 
 @media screen and (max-width: 1200px) {
+  .navbarCool {
+    background: #5200af;
+    padding: 20px;
+  }
+  .navbarCool__menu {
+    display: none;
+  }
+  .navbarCool__toggleButton {
+    display: flex;
+  }
 
-    .navbarCool__menu > a, .navbarCool__more {
-        display: none;
-    }
-    .navbarCool__icon {
-      display: block;
-      font-size: 2rem;
-      margin-left: auto;
-    }
+  .sidebar__menu {
+    background: #5200af;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+  }
+  .sidebar__menu.active {
+    height: 148px;
+    border-top: 2px solid #fff;
+  }
+}
+
+@keyframes colorChanger {
+  0% {
+    color: rgb(255, 215, 0);
+  }
+  20% {
+    color: rgb(255, 205, 0);
+  }
+  30% {
+    color: rgb(255, 195, 0);
+  }
+  40% {
+    color: rgb(255, 185, 0);
+  }
+  60% {
+    color: rgb(255, 175, 0);
+  }
+  80% {
+    color: rgb(255, 165, 0);
+  }
+  100% {
+    color: rgb(255, 180, 0);
+  }
 }

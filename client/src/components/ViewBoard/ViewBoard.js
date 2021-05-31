@@ -1,55 +1,68 @@
 import React, { useEffect } from "react";
-import { Link, useHistory } from 'react-router-dom';
 import { Grid, Typography } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { Link, useParams, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useAlert } from "react-alert";
 
 import "./ViewBoard.css";
 
 import NavbarCool from "../NavbarCool/NavbarCool";
+import { fetchBoard } from "../../actions/leaderboard";
 import useStyles from "./styles";
 
 const ViewBoard = () => {
+  const alert = useAlert();
   const classes = useStyles();
-  const history = useHistory();
-
+  const params = useParams();
+  const location = useLocation();
+  const dispatch = useDispatch();
   const { boardName, boardDescription, participants } = useSelector(
     (state) => state.leaderboard
   );
 
-  const participantArray = participants || [
-    { name: "Participant 1", score: 10 },
-    { name: "Participant 2", score: 7 },
-    { name: "Participant 3", score: 3 },
-  ];
+  participants.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+  const participantArray = participants || [{ name: "Loading...", score: 69 }];
 
-  // useEffect(() => {
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [history])
+  useEffect(() => {
+    dispatch(fetchBoard(params.id));
+  }, [params, dispatch]);
+
+  // Code to scroll to top on page load!
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const shareBoard = () => {
+    navigator.clipboard.writeText(`http://localhost:3000${location.pathname}`);
+    alert.show(
+      "Link to your board copied successfully!",
+      { timeout: 5000, type: "success",}
+    );
+  };
 
   return (
-    <div className="viewBoard">
-      <section className="viewBoard__top">
-        <NavbarCool />
-        <div className="viewBoard__boardInfo">
-          <h1 className="viewBoard__boardTitle">{boardName || "Oops!"}</h1>
-          <p className="viewBoard__boardDescription">
-            {boardDescription || "Something went wrong. :("}
-          </p>
-        </div>
+    <>
+      <NavbarCool />
+      <section className="viewBoard__boardInfo">
+        <h1>{boardName || "Loading..."}</h1>
+        <p>{boardDescription || "Loading..."}</p>
       </section>
-      <section className="viewBoard__bottom">
+
+      <main className="viewBoard__bottom">
         <div className="viewBoard__actionButtonSet">
-          <Link to="/create"><button className="viewBoard__button">Edit Board</button></Link>
-          <button className="viewBoard__button viewBoard__shareButton">Share Board</button>
+          <div className="viewBoard__button">
+            <Link to={`/create/${params.id}`}>Edit Board</Link>
+          </div>
+          <button className="viewBoard__shareButton" onClick={shareBoard}>
+            Share Board
+          </button>
         </div>
+
         <div className="viewBoard__box">
           {participantArray.map((participant, index) => (
             <Grid key={index} className={classes.grid} container spacing={0}>
               <Grid
                 item
-                 
                 className={`${classes.centeringClass} 
                   ${
                     index === 0
@@ -78,8 +91,8 @@ const ViewBoard = () => {
             </Grid>
           ))}
         </div>
-      </section>
-    </div>
+      </main>
+    </>
   );
 };
 

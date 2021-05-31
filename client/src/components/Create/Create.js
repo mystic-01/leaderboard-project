@@ -1,54 +1,46 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import {
-  TextField,
-  Button,
-  Container,
-  Typography,
-  Box,
-  Collapse,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TableContainer,
-  Input,
-  InputLabel,
-  FormControl,
-  FormHelperText,
-} from "@material-ui/core";
-import { useDispatch } from 'react-redux';
+import { TextField, Button, Container, Typography } from "@material-ui/core";
+import { useParams, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { createBoard } from '../../actions/leaderboard';
+import { createBoard, fetchBoard, editBoard } from "../../actions/leaderboard";
 import NavbarCool from "../NavbarCool/NavbarCool";
 import useStyles from "./styles";
 
-import "./Create.css";
-
 const Create = () => {
   const classes = useStyles();
+  const params = useParams();
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const [boardName, setBoardName] = useState("");
   const [boardDescription, setBoardDescription] = useState("");
-
   const [participants, setParticipants] = useState([]);
-  const [open, setOpen] = useState(false);
+  const editBoardInfo = useSelector((state) => state.leaderboard);
 
-  const handleParticipantNameChange = (event, index) => {
-    participants[index].name = event.target.value;
+  console.log(editBoardInfo);
+
+  useEffect(() => {
+    if (params.id) {
+      dispatch(fetchBoard(params.id));
+      if (editBoardInfo !== []) {
+        setBoardName(editBoardInfo.boardName);
+        setBoardDescription(editBoardInfo.boardDescription);
+        setParticipants(editBoardInfo.participants);
+      }
+    }
+  }, [params, dispatch]);
+
+  const handleParticipantNameChange = (e, index) => {
+    participants[index].name = e.target.value;
     setParticipants([...participants]);
   };
-  const handleParticipantScoreChange = (event, index) => {
-    participants[index].score = event.target.value;
+  const handleParticipantScoreChange = (e, index) => {
+    participants[index].score = e.target.value;
     setParticipants([...participants]);
   };
 
-  const deleteParticipant = (event, index) => {
+  const deleteParticipant = (e, index) => {
     setParticipants(participants.filter((item, i) => i !== index));
   };
 
@@ -56,19 +48,15 @@ const Create = () => {
     setParticipants([...participants, { name: "", score: "" }]);
   };
 
-  const createNewBoard = () => {
+  const createNewBoard = (e) => {
+    e.preventDefault();
     const board = { boardName, boardDescription, participants };
-    dispatch(createBoard(board));
+    if (params.id) {
+      dispatch(editBoard(params.id, board, history));
+    } else {
+      dispatch(createBoard(board, history));
+    }
   };
-
-  const row = [
-    { name: "Jack", score: 26 },
-    { name: "Jane", score: 22 },
-    { name: "Greg", score: 40 },
-    { name: "John", score: 30 },
-    { name: "Pete", score: 32 },
-    { name: "Paul", score: 37 },
-  ];
 
   // Code to scroll to bottom when the user adds a participant!
   const endRef = useRef(null);
@@ -88,149 +76,99 @@ const Create = () => {
 
   return (
     <>
-      <div className={classes.navbar}>
-        <NavbarCool />
-      </div>
+      <NavbarCool />
       <Typography className={classes.heading1}>
-        Create Your New Board
+        Create your new board!
       </Typography>
-      <div className={classes.sectionMainCover}>
+      <form
+        className={classes.sectionMainCover}
+        autoComplete="off"
+        onSubmit={createNewBoard}
+      >
         <Container className={classes.sectionMain}>
-          <Typography variant="h5" className={classes.heading2}>
-            Details
-          </Typography>
-          <Typography variant="h6" className={classes.heading3}>
-            Name
-          </Typography>
-          <form className={classes.root} noValidate autoComplete="off">
+          <Typography className={classes.heading2}>Details</Typography>
+          <div className={classes.root}>
+            <Typography className={classes.heading3}>Name</Typography>
             <TextField
-              variant="outlined"
-              value={boardName}
-              label="Board Name"
-              onChange={(e) => setBoardName(e.target.value)}
               autoFocus
-            />
-          </form>
-          <Typography className={classes.heading3}>Description</Typography>
-          <form className={classes.root} noValidate autoComplete="off">
-            <TextField
+              label="Board Name"
+              value={boardName}
+              onChange={(e) => setBoardName(e.target.value)}
               variant="outlined"
-              value={boardDescription}
-              label="Board Description"
-              onChange={(e) => setBoardDescription(e.target.value)}
+              spellCheck="false"
+              required
             />
-          </form>
+            <Typography className={classes.heading3}>Description</Typography>
+            <TextField
+              label="Board Description"
+              value={boardDescription}
+              onChange={(e) => setBoardDescription(e.target.value)}
+              variant="outlined"
+              spellCheck="false"
+              required
+            />
+          </div>
 
           {participants.length > 0 ? (
-            <div>
-              <Typography variant="h5" className={classes.heading2}>
-                Participants
-              </Typography>
+            <>
+              <Typography className={classes.heading2}>Participants</Typography>
               {participants.map((item, index) => (
-                <div key={index}>
+                <div key={index} className={classes.root}>
                   <Typography className={classes.heading3}>
                     Participant {index + 1}
                   </Typography>
-                  <form className={classes.root} noValidate autoComplete="off">
-                    <TextField
-                      variant="outlined"
-                      label="Name"
-                      value={participants[index].name}
-                      onChange={(event) =>
-                        handleParticipantNameChange(event, index)
-                      }
-                    />
-                    <TextField
-                      type="number"
-                      variant="outlined"
-                      label="Score"
-                      value={participants[index].score}
-                      onChange={(event) =>
-                        handleParticipantScoreChange(event, index)
-                      }
-                    />
-                    <Button
-                      className={classes.root2}
-                      variant="contained"
-                      color="secondary"
-                      onClick={(event) => deleteParticipant(event, index)}
-                    >
-                      X
-                    </Button>
-                  </form>
+                  <TextField
+                    autoFocus
+                    label="Name"
+                    value={participants[index].name}
+                    onChange={(e) => handleParticipantNameChange(e, index)}
+                    variant="outlined"
+                    spellCheck="false"
+                    required
+                  />
+                  <TextField
+                    type="number"
+                    label="Score"
+                    value={participants[index].score}
+                    onChange={(e) => handleParticipantScoreChange(e, index)}
+                    variant="outlined"
+                    required
+                  />
+                  <Button
+                    className={classes.root2}
+                    variant="contained"
+                    color="secondary"
+                    onClick={(e) => deleteParticipant(e, index)}
+                  >
+                    X
+                  </Button>
                 </div>
               ))}
-            </div>
+            </>
           ) : null}
           <div className={classes.footer}>
             <Button
               className={classes.footerButton}
+              style={{ color: "#5200af" }}
               variant="outlined"
               onClick={addParticipant}
-              style={{ color: "#8C30F5" }}
             >
               Add Participant
             </Button>
-            <Link to={`/view/${boardName}`}>
-              <Button
-                className={classes.footerButton}
-                variant="contained"
-                color="primary"
-                onClick={createNewBoard}
-              >
-                Create Board
-              </Button>
-            </Link>
+            <Button
+              type="submit"
+              className={classes.footerButton}
+              color="primary"
+              variant="contained"
+            >
+              Create Board
+            </Button>
           </div>
         </Container>
-      </div>
-      {/* <center>
-        <TableRow>
-          <TableCell>
-            <IconButton
-              aria-label="row"
-              size="small"
-              onClick={() => setOpen(!open)}
-            >
-              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-              {<p> See History Of LeaderBoard</p>}
-            </IconButton>
-          </TableCell>
-        </TableRow>
+      </form>
 
-        <TableRow>
-          <TableCell>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box>
-                <Typography variant="h6" gutterBottom component="div">
-                  History
-                </Typography>
-                <Table size="small" aria-label="purchases">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Name</TableCell>
-                      <TableCell align="right">Score </TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {row.map((historyRow) => (
-                      <TableRow>
-                        <TableCell component="th" scope="row">
-                          {historyRow.name}
-                        </TableCell>
-                        <TableCell align="right">{historyRow.score}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </Box>
-            </Collapse>
-          </TableCell>
-        </TableRow>
-      </center> */}
       <div ref={endRef} />
     </>
   );
 };
-
 export default Create;
