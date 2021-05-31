@@ -98,9 +98,11 @@ footer {
 
 .github:hover > svg {
   color: #fff;
+  transition: all 0.275s ease-in-out;
 }
 .linkedIn:hover > svg {
   color: #0a66c2;
+  transition: all 0.273s ease-in-out;
 }
 
 /* Footer Contact Us */
@@ -113,22 +115,23 @@ footer {
   display: flex;
   align-items: center;
   margin: 0 0 5px 0;
+  cursor: pointer;
 }
 .footer__contactUs > ul > .phone {
   display: flex;
   align-items: center;
   margin: 0 0 40px 0;
+  cursor: pointer;
 }
 .footer__contactUs svg {
-  cursor: pointer;
   margin-right: 10px;
   transition: all 0.3s ease-in-out;
 }
-.email > svg:hover {
+.email:hover > svg {
   /* color: #ffff00; */
   color: #ffd900;
 }
-.phone > svg:hover {
+.phone:hover > svg {
   /* color: #36eb36; */
   color: #00ff00;
 }

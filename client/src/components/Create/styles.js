@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
       alignItems: "Center",
       justifyContent: "center",
+      [theme.breakpoints.down('xs')]: {
+        fontSize: "1.5rem",
+      },
     },
     sectionMainCover: {
       backgroundColor :"#f5f5f5",

@@ -90,6 +90,12 @@
   }
 }
 
+@media screen and (max-width: 350px) {
+  .navbarCool__logo > a {
+    font-size: 1.5rem;
+  }
+}
+
 @keyframes colorChanger {
   0% {
     color: rgb(255, 215, 0);

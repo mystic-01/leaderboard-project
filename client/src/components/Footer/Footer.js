@@ -10,7 +10,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import sahil from "../../images/SAHIL.jpeg";
-import harshit from "../../images/harshit.jpeg";
+import harshit from "../../images/harshit.jpg";
 
 import "./Footer.css";
 
